@@ -92,6 +92,8 @@ def solve_transportation_problem(file_path, output_file):
         f.write(f"Время выполнения: {elapsed_time:.4f} секунд\n")
 
 # Пример использования
-input_file = 'C:/Users/zenfo/Desktop/1/vs code/genetic_alg_for_transport_problem/data/data_20.txt'
-output_file = 'C:/Users/zenfo/Desktop/1/vs code/genetic_alg_for_transport_problem/data/output.txt'
-solve_transportation_problem(input_file, output_file)
+for i in range(1, 22):
+    input_file = 'C:/Users/zenfo/Desktop/1/vs code/genetic_alg_for_transport_problem/data/data_'+f"{i}"+".txt"
+    output_file = 'C:/Users/zenfo/Desktop/1/vs code/genetic_alg_for_transport_problem/data/output' + f"{i}"+".txt"
+    solve_transportation_problem(input_file, output_file)
+

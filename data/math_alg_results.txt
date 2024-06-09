@@ -1,0 +1,21 @@
+Filename,Status,Total Cost,Execution Time
+data/data_1.txt,Optimal,696.0,0.03300619125366211
+data/data_2.txt,Optimal,669.0,0.03200578689575195
+data/data_3.txt,Optimal,1484.0,0.04719829559326172
+data/data_4.txt,Optimal,789.0,0.042876482009887695
+data/data_5.txt,Optimal,1127.0,0.054436683654785156
+data/data_6.txt,Optimal,925.0,0.048011064529418945
+data/data_7.txt,Optimal,1399.0,0.05461382865905762
+data/data_8.txt,Optimal,1501.0,0.06316232681274414
+data/data_9.txt,Optimal,1784.0,0.07359838485717773
+data/data_10.txt,Optimal,1582.0,0.050013065338134766
+data/data_11.txt,Optimal,1766.0,0.05500912666320801
+data/data_12.txt,Optimal,1844.0,0.04701066017150879
+data/data_13.txt,Optimal,1727.0,0.051010847091674805
+data/data_14.txt,Optimal,2418.0,0.05017256736755371
+data/data_15.txt,Optimal,2235.0,0.281527042388916
+data/data_16.txt,Optimal,2823.0,0.28792905807495117
+data/data_17.txt,Optimal,4305.0,0.03200554847717285
+data/data_18.txt,Optimal,1507.0,0.2503633499145508
+data/data_19.txt,Optimal,3227.0,0.3784599304199219
+data/data_20.txt,Optimal,6666.0,0.5085258483886719

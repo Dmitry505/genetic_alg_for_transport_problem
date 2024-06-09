@@ -57,4 +57,4 @@ def run_multiple_files(filenames, output_filename="results.txt"):
 file_list = ["data/data_1.txt", "data/data_2.txt", "data/data_3.txt", "data/data_4.txt", "data/data_5.txt", "data/data_6.txt", "data/data_7.txt", "data/data_8.txt", "data/data_9.txt", "data/data_10.txt", "data/data_11.txt", "data/data_12.txt", "data/data_13.txt", "data/data_14.txt", "data/data_15.txt", "data/data_16.txt", "data/data_17.txt", "data/data_18.txt", "data/data_19.txt", "data/data_20.txt"]
 
 # Запуск функции для обработки всех файлов
-run_multiple_files(file_list, "C:/Users/zenfo/Desktop/1/vs code/genetic_alg_for_transport_problem/data/math_alg_results.txt")
+run_multiple_files(file_list, "data/math_alg_results.txt")

@@ -67,7 +67,7 @@ def process_files(file_list):
         total_cost, elapsed_time = solve_transportation_problem(filename)
         results.append((filename, total_cost, elapsed_time))
     
-    with open("results.txt", "w") as f:
+    with open("data/din_prog_alg_results.txt", "w") as f:
         for filename, total_cost, elapsed_time in results:
             f.write(f"File: {filename}, Total Cost: {total_cost}, Elapsed Time: {elapsed_time:.4f} seconds\n")
 

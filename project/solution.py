@@ -3,6 +3,7 @@ import numpy as np
 from math import ceil
 
 def solution(sol):
+    num_factories, num_stores, production, demand, costs, fixed_costs = read_transportation_data()
     fin = 0
     for i in range (num_factories):
         for j in range(num_stores):
@@ -24,6 +25,4 @@ def solution(sol):
         fin = ceil(1.1 * fin)
         fin += ceil((1 + ((1 - np.sum(sol)//np.sum(demand)) * 50)**2//100) * fin)
     return fin
-
-num_factories, num_stores, production, demand, costs, fixed_costs = read_transportation_data()
 

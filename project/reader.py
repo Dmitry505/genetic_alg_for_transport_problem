@@ -1,4 +1,4 @@
-def read_transportation_data(filename="transportation_data.txt"):
+def read_transportation_data(filename="data/data_20.txt"):
 
   with open(filename, "r") as f:
     num_factories, num_stores = map(int, f.readline().split())

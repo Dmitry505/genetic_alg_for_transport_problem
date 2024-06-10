@@ -3,16 +3,17 @@ import numpy as np
 import time
 from reader import read_transportation_data
 from solution import solution
-from generation import generate_transportation_data
+from balance import balancing
 
 
 def genetic_algorithm():
+    num_factories, num_stores, production, demand, costs, fixed_costs = read_transportation_data()
+
     start_time = time.time()
     population_size = 8
     population_start_size = 64
     mutation_rate = 0.1
     max_generations = 50
-
 
     def initialize_population():
         population = []
@@ -58,22 +59,33 @@ def genetic_algorithm():
                 if random.random() < mutation_rate:
                     not_relz_prod = production[i] - np.sum(chromosome[i]) + chromosome[i][j]
                     not_relz_demand = demand[j] - np.sum(chromosome[:, j]) + chromosome[i][j]
-                    chromosome[i][j] = random.randint(0, max(0, min(not_relz_prod, not_relz_demand)))
+                    chromosome[i][j] = random.choice([0, max(0, min(not_relz_prod, not_relz_demand))])
         return chromosome
 
-    def selection():
-        population = np.unique(initialize_population(), axis=0)
+    def selection(population):
+        population = np.unique(population, axis=0)
         population = sorted(population, key=solution)
         return population[:population_size]
 
+    def score(sol):
+        fin = 0
+        for i in range(num_factories):
+            for j in range(num_stores):
+                if (sol[i][j] != 0):
+                    fin += sol[i][j] * costs[i][j]
+                    fin += fixed_costs[i][j]
+        return  fin
+
 
     population = initialize_population()
-    population = selection()
+    population = selection(population)
+    if (np.sum(population[0]) != np.sum(demand)) :
+        population = initialize_population()
+        population = selection(population)
+
     counter = 0
-    vizual = []
     while(True):
         counter += 1
-        print(counter)
         l = len(population)
         for i in range (l):
             for j in range (l):
@@ -84,36 +96,18 @@ def genetic_algorithm():
                     population.append(child1)
                     population.append(child2)
 
-        population = selection()
-        # sss = str(solution(population[0])) + " " +str(np.sum(population[0]) == np.sum(demand))
-        # vizual.append(sss)
+        population = selection(population)
+
         if (counter == max_generations ):
             break
 
-    # with open("viz_data.txt", "w") as f:
-    #     f.write(f"{vizual}\n")
 
-    fin = 0
-    # for sol in population:
-    sol = population[0]
-    for i in range (num_factories):
-        for j in range(num_stores):
-            if (sol[i][j] != 0):
-                fin += sol[i][j] * costs[i][j]
-                fin += fixed_costs[i][j]
-    # print('___'*10)
-    # print(fin)
-    # print(counter)
-    print(sol)
-    print(fin)
-    fin = 0
-    print(np.sum(population[0]) == np.sum(demand))
+
+    if (np.sum(population[0]) != np.sum(demand)):
+        population = balancing(population)
+
+    fin = score(population[0])
 
     execution_time = time.time() - start_time
-    return fin,execution_time
 
-
-
-num_factories, num_stores, production, demand, costs, fixed_costs = read_transportation_data()
-solut, timer = genetic_algorithm()
-print(timer)
+    return population[0],fin,execution_time

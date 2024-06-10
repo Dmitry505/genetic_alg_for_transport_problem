@@ -1,7 +1,7 @@
 import random
 from math import ceil
 
-def generate_transportation_data(num_factories, num_stores, filename="transportation_data.txt"):
+def generate_transportation_data(num_factories, num_stores, filename="data/data.txt"):
 
     demand = [random.randint(40, 150) for _ in range(num_stores)]
     s_demand = ''
